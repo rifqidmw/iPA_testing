@@ -51,6 +51,30 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    flavorDimensions "env"
+    productFlavors {
+        sit {
+            dimension "env"
+            applicationId "com.aigs.base.sit"
+            versionNameSuffix "-SIT"
+        }
+        uat {
+            dimension "env"
+            applicationId "com.aigs.base.uat"
+            versionNameSuffix "-UAT"
+        }
+        preprod {
+            dimension "env"
+            applicationId "com.aigs.base.preprod"
+            versionNameSuffix "-PreProd"
+        }
+        prod {
+            dimension "env"
+            applicationId "com.aigs.base.prod"
+            versionNameSuffix "-Prod"
+        }
+    }
 }
 
 flutter {
