@@ -1,9 +1,9 @@
-import '../constants/constants.dart';
+import 'package:base_flutter/presentation/resources/constants_manager.dart';
 
 extension NonNullString on String? {
   String orEmpty() {
     if (this == null) {
-      return Constants.empty;
+      return AppConstants.empty;
     } else {
       return this!;
     }
@@ -13,7 +13,17 @@ extension NonNullString on String? {
 extension NonNullInteger on int? {
   int orZero() {
     if (this == null) {
-      return Constants.zero;
+      return AppConstants.zero;
+    } else {
+      return this!;
+    }
+  }
+}
+
+extension NonNullDouble on double? {
+  double orZero() {
+    if (this == null) {
+      return AppConstants.zeroDouble;
     } else {
       return this!;
     }

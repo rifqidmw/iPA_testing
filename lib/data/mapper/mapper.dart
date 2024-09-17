@@ -1,96 +1,37 @@
-import 'package:base_flutter/core/constants/constants.dart';
 import 'package:base_flutter/core/utils/extensions.dart';
+import 'package:base_flutter/data/responses/login/login_response.dart';
+import 'package:base_flutter/data/responses/product/product_response.dart';
+import 'package:base_flutter/domain/models/product_model.dart';
+import 'package:base_flutter/domain/models/user_model.dart';
+import 'package:base_flutter/presentation/resources/constants_manager.dart';
 
-import '../../domain/models/models.dart';
-import '../responses/responses.dart';
-
-extension CustomerResponseMapper on CustomerResponse? {
-  Customer toDomain() {
-    return Customer(
-        this?.id.orEmpty() ?? Constants.empty,
-        this?.name.orEmpty() ?? Constants.empty,
-        this?.numOfNotifications.orZero() ?? Constants.zero);
+extension LoginResponseMapper on LoginResponse? {
+  UserModel toDomain() {
+    return UserModel(
+        id: this?.id.orZero() ?? AppConstants.zero,
+        username: this?.username.orEmpty() ?? AppConstants.empty,
+        email: this?.email.orEmpty() ?? AppConstants.empty,
+        firstName: this?.firstName.orEmpty() ?? AppConstants.empty,
+        lastName: this?.lastName.orEmpty() ?? AppConstants.empty,
+        gender: this?.gender.orEmpty() ?? AppConstants.empty,
+        image: this?.image.orEmpty() ?? AppConstants.empty,
+        token: this?.token.orEmpty() ?? AppConstants.empty,
+        refreshToken: this?.refreshToken.orEmpty() ?? AppConstants.empty);
   }
 }
 
-extension ContactsResponseMapper on ContactsResponse? {
-  Contacts toDomain() {
-    return Contacts(
-        this?.phone.orEmpty() ?? Constants.empty,
-        this?.email.orEmpty() ?? Constants.empty,
-        this?.link.orEmpty() ?? Constants.empty);
-  }
-}
-
-extension AuthenticationResponseMapper on AuthenticationResponse? {
-  Authentication toDomain() {
-    return Authentication(this?.customer.toDomain(), this?.contacts.toDomain());
-  }
-}
-
-extension ForgotPasswordResponseMApper on ForgotPasswordResponse? {
-  String toDomain() {
-    return this?.support.orEmpty() ?? Constants.empty;
-  }
-}
-
-extension ServiceResponseMapper on ServiceResponse? {
-  Service toDomain() {
-    return Service(this?.id ?? Constants.zero, this?.title ?? Constants.empty,
-        this?.image ?? Constants.empty);
-  }
-}
-
-extension BannerResponseMapper on BannerResponse? {
-  BannerAds toDomain() {
-    return BannerAds(this?.id ?? Constants.zero, this?.title ?? Constants.empty,
-        this?.image ?? Constants.empty);
-  }
-}
-
-extension StoreResponseMapper on StoreResponse? {
-  Store toDomain() {
-    return Store(this?.id ?? Constants.zero, this?.title ?? Constants.empty,
-        this?.image ?? Constants.empty);
-  }
-}
-
-extension HomeResponseMapper on HomeResponse? {
-  HomeObject toDomain() {
-    List<BannerAds> banners = (this
-                ?.data
-                .bannersResponse
-                .map((bannerResponse) => bannerResponse.toDomain()) ??
-            const Iterable.empty())
-        .cast<BannerAds>()
-        .toList();
-    List<Service> services = (this
-                ?.data
-                .servicesResponse
-                .map((servicesResponse) => servicesResponse.toDomain()) ??
-            const Iterable.empty())
-        .cast<Service>()
-        .toList();
-    List<Store> stores = (this
-                ?.data
-                .storesResponse
-                .map((storesResponse) => storesResponse.toDomain()) ??
-            const Iterable.empty())
-        .cast<Store>()
-        .toList();
-    HomeData data = HomeData(banners, services, stores);
-
-    return HomeObject(data);
-  }
-}
-
-extension StoreDetailsMapper on StoreDetailsResponse? {
-  StoreDetails toDomain() {
-    return StoreDetails(
-        about: this?.about ?? Constants.empty,
-        title: this?.title ?? Constants.empty,
-        services: this?.services ?? Constants.empty,
-        image: this?.image ?? Constants.empty,
-        details: this?.details ?? Constants.empty);
-  }
+extension ProductResponseMapper on ProductResponse? {
+  List<ProductModel> toDomain() {
+    if (this == null) {
+      return [];
+    }
+    
+    return this!.products!.map((e) {
+      return ProductModel(
+        title: e.title.orEmpty(),
+        price: e.price.orZero(),
+        images: e.thumbnail.orEmpty()
+      );
+    }).toList();
+  } 
 }

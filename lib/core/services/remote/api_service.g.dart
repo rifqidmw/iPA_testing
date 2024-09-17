@@ -14,7 +14,7 @@ class _ApiServiceClient implements ApiServiceClient {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://ahmedabdelalem38.mocklab.io';
+    baseUrl ??= 'https://dummyjson.com';
   }
 
   final Dio _dio;
@@ -24,25 +24,20 @@ class _ApiServiceClient implements ApiServiceClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AuthenticationResponse> login(
-    String email,
-    String password,
-  ) async {
+  Future<LoginResponse> login(LoginRequest loginRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {
-      'email': email,
-      'password': password,
-    };
-    final _options = _setStreamType<AuthenticationResponse>(Options(
+    final _data = <String, dynamic>{};
+    _data.addAll(loginRequest.toJson());
+    final _options = _setStreamType<LoginResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/customers/login',
+          '/auth/login',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -52,9 +47,9 @@ class _ApiServiceClient implements ApiServiceClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthenticationResponse _value;
+    late LoginResponse _value;
     try {
-      _value = AuthenticationResponse.fromJson(_result.data!);
+      _value = LoginResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -63,99 +58,19 @@ class _ApiServiceClient implements ApiServiceClient {
   }
 
   @override
-  Future<ForgotPasswordResponse> forgotPassword(String email) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = {'email': email};
-    final _options = _setStreamType<ForgotPasswordResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/customers/forgotPassword',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ForgotPasswordResponse _value;
-    try {
-      _value = ForgotPasswordResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<AuthenticationResponse> register(
-    String userName,
-    String countryMobileCode,
-    String mobileNumber,
-    String email,
-    String password,
-    String profilePicture,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = {
-      'user_name': userName,
-      'country_mobile_code': countryMobileCode,
-      'mobile_number': mobileNumber,
-      'email': email,
-      'password': password,
-      'profile_picture': profilePicture,
-    };
-    final _options = _setStreamType<AuthenticationResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/customers/register',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthenticationResponse _value;
-    try {
-      _value = AuthenticationResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<HomeResponse> getHomeData() async {
+  Future<ProductResponse> getProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HomeResponse>(Options(
+    final _options = _setStreamType<ProductResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/home',
+          '/products',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -165,42 +80,9 @@ class _ApiServiceClient implements ApiServiceClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late HomeResponse _value;
+    late ProductResponse _value;
     try {
-      _value = HomeResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<StoreDetailsResponse> getStoreDetailsData() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<StoreDetailsResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/store',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late StoreDetailsResponse _value;
-    try {
-      _value = StoreDetailsResponse.fromJson(_result.data!);
+      _value = ProductResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

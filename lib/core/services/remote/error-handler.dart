@@ -1,3 +1,4 @@
+import 'package:base_flutter/core/utils/functions.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:base_flutter/presentation/resources/strings_manager.dart';
@@ -84,28 +85,28 @@ class ResponseCode {
 }
 
 class ResponseMessage {
-  static String SUCCESS = AppStrings.success.tr(); // success with data
+  static String SUCCESS = getString(AppStrings.success); // success with data
   static String NO_CONTENT =
-      AppStrings.noContent.tr(); // success with no data (no content)
+      getString(AppStrings.noContent); // success with no data (no content)
   static String BAD_REQUEST =
-      AppStrings.badRequestError.tr(); // failure, API rejected request
-  static String UNAUTORISED =
-      AppStrings.unauthorizedError.tr(); // failure, user is not authorised
+      getString(AppStrings.badRequestError); // failure, API rejected request
+  static String UNAUTORISED = getString(
+      AppStrings.unauthorizedError); // failure, user is not authorised
   static String FORBIDDEN =
-      AppStrings.forbiddenError.tr(); //  failure, API rejected request
-  static String INTERNAL_SERVER_ERROR =
-      AppStrings.internalServerError.tr(); // failure, crash in server side
+      getString(AppStrings.forbiddenError); //  failure, API rejected request
+  static String INTERNAL_SERVER_ERROR = getString(
+      AppStrings.internalServerError); // failure, crash in server side
   static String NOT_FOUND =
-      AppStrings.notFoundError.tr(); // failure, crash in server side
+      getString(AppStrings.notFoundError); // failure, crash in server side
 
   // local status code
-  static String CONNECT_TIMEOUT = AppStrings.timeoutError.tr();
-  static String CANCEL = AppStrings.defaultError.tr();
-  static String RECIEVE_TIMEOUT = AppStrings.timeoutError.tr();
-  static String SEND_TIMEOUT = AppStrings.timeoutError.tr();
-  static String CACHE_ERROR = AppStrings.cacheError.tr();
-  static String NO_INTERNET_CONNECTION = AppStrings.noInternetError.tr();
-  static String DEFAULT = AppStrings.defaultError.tr();
+  static String CONNECT_TIMEOUT = getString(AppStrings.timeoutError);
+  static String CANCEL = getString(AppStrings.defaultError);
+  static String RECIEVE_TIMEOUT = getString(AppStrings.timeoutError);
+  static String SEND_TIMEOUT = getString(AppStrings.timeoutError);
+  static String CACHE_ERROR = getString(AppStrings.cacheError);
+  static String NO_INTERNET_CONNECTION = getString(AppStrings.noInternetError);
+  static String DEFAULT = getString(AppStrings.defaultError);
 }
 
 extension DataSourceExtension on DataSource {
