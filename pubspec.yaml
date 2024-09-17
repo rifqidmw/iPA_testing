@@ -6,6 +6,50 @@ version: 0.1.0
 environment:
   sdk: '>=3.6.0-239.0.dev <4.0.0'
 
+flavorizr:
+  app:
+    android:
+      applicationId: "com.aigs.base"
+    ios:
+      bundleId: "com.aigs.base"
+  flavors:
+    sit:
+      app:
+        name: "Base Flutter SIT"
+        android:
+          applicationId: "com.aigs.base.sit"
+        ios:
+          bundleId: "com.aigs.base"
+      environment:
+        appConfig: "lib/config/config_sit.dart"
+    uat:
+      app:
+        name: "Base Flutter UAT"
+        android:
+          applicationId: "com.aigs.base.uat"
+        ios:
+          bundleId: "com.aigs.base.uat"
+      environment:
+        appConfig: "lib/config/config_uat.dart"
+    preprod:
+      app:
+        name: "Base Flutter PreProd"
+        android:
+          applicationId: "com.aigs.base.preprod"
+        ios:
+          bundleId: "com.aigs.base.preprod"
+      environment:
+        appConfig: "lib/config/config_preprod.dart"
+    prod:
+      app:
+        name: "Base Flutter Prod"
+        android:
+          applicationId: "com.aigs.base.prod"
+        ios:
+          bundleId: "com.aigs.base.prod"
+      environment:
+        appConfig: "lib/config/config_prod.dart"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -37,6 +81,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   build_runner: ^2.4.12
   retrofit_generator: '>=8.0.0 <10.0.0'
+  mockito: ^5.4.0
+  flutter_flavorizr: ^2.0.1+2
 
 flutter:
   uses-material-design: true
