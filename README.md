@@ -1,3 +1,3 @@
-# base_project_mvvm_provider
+# base_flutter
 
 A new Flutter project.

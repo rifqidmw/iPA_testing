@@ -1,6 +1,6 @@
 {
-    "name": "base_project_mvvm_provider",
-    "short_name": "base_project_mvvm_provider",
+    "name": "base_flutter",
+    "short_name": "base_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

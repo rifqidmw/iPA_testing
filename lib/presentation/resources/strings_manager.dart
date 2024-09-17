@@ -1,0 +1,37 @@
+class AppStrings {
+  static const String noRouteFound = 'no_route_found';
+  static const String password = "password_hint";
+  static const String username = "username_hint";
+  static const String usernameError = "username_error";
+  static const String passwordError = "invalid_password";
+  static const String login = "login_button";
+  static const String loading = "loading";
+  static const String loadingMessage = "loading_message";
+  static const String retryAgain = "retry_again";
+  static const String ok = "ok";
+  static const String empty = "empty";
+  static const String success = "success";
+  static const String error = "error_occurred";
+  static const String settings = "settings";
+  static const String changeLang = "change_language";
+  static const String logout = "logout";
+  static const String badRequestError = "bad_request_error";
+  static const String noContent = "no_content";
+  static const String forbiddenError = "forbidden_error";
+  static const String unauthorizedError = "unauthorized_error";
+  static const String notFoundError = "not_found_error";
+  static const String conflictError = "conflict_error";
+  static const String internalServerError = "internal_server_error";
+  static const String unknownError = "unknown_error";
+  static const String timeoutError = "timeout_error";
+  static const String defaultError = "default_error";
+  static const String cacheError = "cache_error";
+  static const String noInternetError = "no_internet_error";
+  static const String loginDescription = "login_description";
+  static const String next = "next";
+  static const String cancel = "cancel";
+  static const String hello = "hello";
+  static const String notYou = "not_you";
+  static const String myOrders = "my_orders";
+  static const String justForYou = "just_for_you";
+}
