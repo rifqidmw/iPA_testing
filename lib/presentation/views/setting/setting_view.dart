@@ -33,6 +33,7 @@ class _SettingViewState extends State<SettingView> {
           getString(AppStrings.settings),
           style: getSemiBoldStyle(color: ColorManager.black, fontSize: 20),
         ),
+        centerTitle: false,
         backgroundColor: ColorManager.white,
         elevation: 0,
       ),
