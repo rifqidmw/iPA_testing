@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 void main() async {
-  AppEnvironment.setupEnv(Environment.prod);
+  AppEnvironment.setupEnv(Environment.sit);
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await initAppModule();

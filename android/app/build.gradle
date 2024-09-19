@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.base_flutter"
+    namespace = "com.aigs.base"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -52,27 +52,30 @@ android {
         }
     }
 
-    flavorDimensions "env"
+    flavorDimensions "version"
     productFlavors {
         sit {
-            dimension "env"
+            dimension "version"
             applicationId "com.aigs.base.sit"
             versionNameSuffix "-SIT"
+            resValue "string", "app_name", "flavors-sit"
         }
         uat {
-            dimension "env"
+            dimension "version"
             applicationId "com.aigs.base.uat"
             versionNameSuffix "-UAT"
+            resValue "string", "app_name", "flavors-uat "
         }
         preprod {
-            dimension "env"
+            dimension "version"
             applicationId "com.aigs.base.preprod"
-            versionNameSuffix "-PreProd"
+            versionNameSuffix "-PREPROD"
+            resValue "string", "app_name", "flavors-preprod"
         }
         prod {
-            dimension "env"
-            applicationId "com.aigs.base.prod"
-            versionNameSuffix "-Prod"
+            dimension "version"
+            applicationId "com.aigs.base"
+            resValue "string", "app_name", "flavors"
         }
     }
 }

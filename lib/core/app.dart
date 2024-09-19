@@ -1,3 +1,4 @@
+import 'package:base_flutter/core/env.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/core/services/local/app_prefs.dart';
 import 'package:base_flutter/core/di/dependency_injection.dart';
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: AppEnvironment.environment == Environment.sit ? true : false,
       onGenerateRoute: RouteGenerator.getRoute,
       initialRoute: Routes.splashRoute,
       theme: getApplicationTheme(),

@@ -1,4 +1,3 @@
-import 'package:base_flutter/config/config_sit.dart';
 import 'package:base_flutter/data/responses/login/login_response.dart';
 import 'package:base_flutter/data/responses/product/product_response.dart';
 import 'package:base_flutter/domain/request/login/login_request.dart';
@@ -9,7 +8,7 @@ import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
 //run in terminal "dart run build_runner build --delete-conflicting-outputs" in every change
 
-@RestApi(baseUrl: AppConfig.baseUrl)
+@RestApi()
 abstract class ApiServiceClient {
   factory ApiServiceClient(Dio dio, {String baseUrl}) = _ApiServiceClient;
 

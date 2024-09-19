@@ -1,4 +1,4 @@
-import 'package:base_flutter/config/config_sit.dart';
+import 'package:base_flutter/core/env.dart';
 import 'package:base_flutter/presentation/resources/constants_manager.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -23,7 +23,7 @@ class DioFactory {
       headers: _headers,
       receiveTimeout: const Duration(milliseconds: AppConstants.apiTimeOut),
       sendTimeout: const Duration(milliseconds: AppConstants.apiTimeOut),
-      baseUrl: AppConfig.baseUrl,
+      baseUrl: AppEnvironment.baseApiUrl,
     );
 
     if (!kReleaseMode) {
