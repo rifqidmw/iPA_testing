@@ -2,22 +2,22 @@ import 'package:base_flutter/core/services/remote/api_service.dart';
 import 'package:base_flutter/data/data_source/remote_data_source.dart';
 import 'package:base_flutter/data/responses/login/login_response.dart';
 import 'package:base_flutter/domain/request/login/login_request.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mockito/mockito.dart';
 
-import 'remote_data_source_test.mocks.dart';
 
 void main() {
   final getIt = GetIt.instance;
   late RemoteDataSource remoteDataSource;
-  late MockApiServiceClient mockApiServiceClient;
+  late ApiServiceClient apiServiceClient;
 
   setUp(() {
+    Dio dio = Dio();
     getIt.reset();
 
-    mockApiServiceClient = MockApiServiceClient();
-    getIt.registerLazySingleton<ApiServiceClient>(() => mockApiServiceClient);
+    apiServiceClient = ApiServiceClient(dio);
+    getIt.registerLazySingleton<ApiServiceClient>(() => apiServiceClient);
 
     remoteDataSource = RemoteDataSourceImp(getIt<ApiServiceClient>());
   });
@@ -25,8 +25,9 @@ void main() {
   test('should return UserResponse when login is successful', () async {
     // Arrange
     final loginRequest = LoginRequest(
-        username: 'emilys', password: 'emilyspass', expiresInMins: 60);
-    final userResponse = LoginResponse(
+        username: '1', password: '2', expiresInMins: 60);
+
+    final expectedResponse = LoginResponse(
         id: 1,
         username: 'emilys',
         email: 'emily.johnson@x.dummyjson.com',
@@ -35,27 +36,31 @@ void main() {
         gender: 'female',
         image: 'https://dummyjson.com/icon/emilys/128',
         token:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MjY1NDg5MjUsImV4cCI6MTcyNjU1MjUyNX0.dwkrwrD6LI2d3gdh-FRGxye9o_0TumCFDhxBfEyF2lY',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MjY2NTE2ODUsImV4cCI6MTcyNjY1NTI4NX0.f03SSbNY5VhTgiKL8x-fwc51wApVhYJb64nOg9SB37k',
         refreshToken:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MjY1NDg5MjUsImV4cCI6MTcyOTE0MDkyNX0.rPhhTNzIB5bSiPu2ItN9azoqkImN-zNJFTb9YrX9q7Y');
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MjY2NTExNTMsImV4cCI6MTcyOTI0MzE1M30.6y9klhQAo5V5ELR5MsFHXWrRowcT7kNtyA_TI6E7dvs');
 
-    when(remoteDataSource.login(loginRequest))
-        .thenAnswer((_) async => userResponse);
-
-    final result = await remoteDataSource.login(loginRequest);
-
-    expect(result, userResponse);
+    try {
+      final result = await remoteDataSource.login(loginRequest);
+      expect(result.id, 1);
+    } on DioException catch (e) {
+      fail('Expected a Dio Exception: $e');
+    } catch (e) {
+      fail('Expected a error but got a different exception: $e');
+    }    
   });
 
   test('should throw an exception if login fails', () async {
     final loginRequest = LoginRequest(
-        username: 'user', password: 'pass', expiresInMins: 60);
+        username: 'emilys', password: 'emilyspass', expiresInMins: 60);
 
-    when(mockApiServiceClient.login(loginRequest))
-        .thenAnswer((_) async => throw Exception('Login failed'));
-
-    expect(() => remoteDataSource.login(loginRequest), throwsException);
-
-    verify(mockApiServiceClient.login(loginRequest)).called(1);
+    try {
+      await remoteDataSource.login(loginRequest);
+      fail('Expected a error with status code 400 but got a success.');
+    } on DioException catch (e) {
+      expect(e.response?.statusCode, equals(400));
+    } catch (e) {
+      fail('Expected a error but got a different exception: $e');
+    }
   });
 }
