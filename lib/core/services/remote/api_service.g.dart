@@ -13,9 +13,7 @@ class _ApiServiceClient implements ApiServiceClient {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://dummyjson.com';
-  }
+  });
 
   final Dio _dio;
 
