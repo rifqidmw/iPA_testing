@@ -58,24 +58,24 @@ android {
             dimension "version"
             applicationId "com.aigs.base.sit"
             versionNameSuffix "-SIT"
-            resValue "string", "app_name", "flavors-sit"
+            resValue "string", "app_name", "Base Flutter SIT"
         }
         uat {
             dimension "version"
             applicationId "com.aigs.base.uat"
             versionNameSuffix "-UAT"
-            resValue "string", "app_name", "flavors-uat "
+            resValue "string", "app_name", "Base Flutter UAT "
         }
         preprod {
             dimension "version"
             applicationId "com.aigs.base.preprod"
             versionNameSuffix "-PREPROD"
-            resValue "string", "app_name", "flavors-preprod"
+            resValue "string", "app_name", "Base Flutter Pre Prod"
         }
         prod {
             dimension "version"
             applicationId "com.aigs.base"
-            resValue "string", "app_name", "flavors"
+            resValue "string", "app_name", "Base Flutter SIT"
         }
     }
 }
