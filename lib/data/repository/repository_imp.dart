@@ -1,4 +1,4 @@
-import 'package:base_flutter/data/mapper/mapper.dart';
+import 'package:base_flutter/core/mapper/mapper.dart';
 import 'package:base_flutter/data/responses/login/login_response.dart';
 import 'package:base_flutter/data/responses/product/product_response.dart';
 import 'package:base_flutter/domain/models/product_model.dart';

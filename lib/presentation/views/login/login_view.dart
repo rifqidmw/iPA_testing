@@ -12,8 +12,8 @@ import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/styles_manager.dart';
 import '../../resources/values_manager.dart';
-import '../../widgets/button/button_component.dart';
-import '../../widgets/text_field/text_field_component.dart';
+import '../../widgets/button/button_sample_component.dart';
+import '../../widgets/text_field/text_field_sample_component.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StatefulWidget {
@@ -126,7 +126,7 @@ class _LoginViewState extends State<LoginView> {
                         StreamBuilder(
                           stream: _viewModel.isUserNameValid,
                           builder: (context, snapshot) {
-                            return TextFieldComponent(
+                            return TextFieldSampleComponent(
                               hintText: getString(AppStrings.username),
                               inputType: TextInputType.name,
                               errorText: (snapshot.data ?? true)
@@ -143,7 +143,7 @@ class _LoginViewState extends State<LoginView> {
                         StreamBuilder(
                           stream: _viewModel.isPasswordValid,
                           builder: (context, snapshot) {
-                            return TextFieldComponent(
+                            return TextFieldSampleComponent(
                               hintText: getString(AppStrings.password),
                               inputType: TextInputType.visiblePassword,
                               errorText: (snapshot.data ?? true)
@@ -161,7 +161,7 @@ class _LoginViewState extends State<LoginView> {
                         StreamBuilder(
                           stream: _viewModel.outAreAllInputsValid,
                           builder: (context, snapshot) {
-                            return ButtonComponent(
+                            return ButtonSampleComponent(
                                 title: getString(AppStrings.login),
                                 onPressed: () {
                                   if (snapshot.data ?? false) {

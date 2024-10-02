@@ -5,6 +5,7 @@ class FontFamily {
   static const String poppins = "Poppins";
   static const String nunitoSans = "NunitoSans";
   static const String raleway = "Raleway";
+  static const String lato = "Lato";
 }
 
 class FontWeightManager {

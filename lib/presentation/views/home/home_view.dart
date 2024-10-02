@@ -53,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
             padding: const EdgeInsets.symmetric(horizontal: 18),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
-                color: ColorManager.blue1),
+                color: ColorManager.sampleBlue1),
             child: Center(
               child: Text(
                 'My Activity',
