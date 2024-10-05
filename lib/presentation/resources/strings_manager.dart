@@ -31,7 +31,4 @@ class AppStrings {
   static const String next = "next";
   static const String cancel = "cancel";
   static const String hello = "hello";
-  static const String notYou = "not_you";
-  static const String myOrders = "my_orders";
-  static const String justForYou = "just_for_you";
 }

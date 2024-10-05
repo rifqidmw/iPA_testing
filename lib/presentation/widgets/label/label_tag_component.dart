@@ -35,7 +35,7 @@ class LabelTagComponent extends StatelessWidget {
 
               if (trailingIcon.isNotEmpty) ...[
                 const SizedBox(width: 2,),
-                Image.asset(ImageAssets.icCrossSmall)
+                const Icon(Icons.close),
               ]
             ],
           ),
