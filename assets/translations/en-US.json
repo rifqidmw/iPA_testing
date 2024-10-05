@@ -31,8 +31,5 @@
   "login_description" : "Good to see you back!",
   "next" : "Next",
   "cancel" : "Cancel",
-  "hello" : "Hello",
-  "not_you" : "Not You?",
-  "my_orders" : "My Order",
-  "just_for_you" : "Just For You"
+  "hello" : "Hello"
 }

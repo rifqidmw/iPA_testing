@@ -30,8 +30,5 @@
   "username_error" : "please enter your username",
   "login_description" : "Good to see you back!",
   "next" : "Next",
-  "cancel" : "Cancel",
-  "not_you" : "Not You?",
-  "my_orders" : "Pesanan Saya",
-  "just_for_you" : "Hanya untuk kamu"
+  "cancel" : "Cancel"
 }

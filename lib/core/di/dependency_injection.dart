@@ -8,8 +8,6 @@ import 'package:base_flutter/core/services/remote/network_info.dart';
 import 'package:base_flutter/data/repository/repository_imp.dart';
 import 'package:base_flutter/domain/usecase/home_usecase.dart';
 import 'package:base_flutter/domain/usecase/login_usecase.dart';
-import 'package:base_flutter/presentation/views/login/login_viewmodel.dart';
-import 'package:base_flutter/presentation/views/home/home_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -50,20 +48,3 @@ Future<void> initAppModule() async {
   dIinstance.registerLazySingleton<Repository>(
       () => RepositoryImp(dIinstance(), dIinstance(), dIinstance()));
 }
-
-initLoginModule() {
-  if (!GetIt.I.isRegistered<LoginUseCase>()) {
-    dIinstance.registerFactory<LoginUseCase>(() => LoginUseCase(dIinstance()));
-    dIinstance
-        .registerFactory<LoginViewModel>(() => LoginViewModel(dIinstance()));
-  }
-}
-
-initHomeModule() {
-  if (!GetIt.I.isRegistered<HomeUseCase>()) {
-    dIinstance.registerFactory<HomeUseCase>(() => HomeUseCase(dIinstance()));
-    dIinstance
-        .registerFactory<HomeViewModel>(() => HomeViewModel(dIinstance()));
-  }
-}
-
