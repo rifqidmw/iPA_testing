@@ -13,7 +13,7 @@ TextStyle _getTextStyle(
 // regular style
 TextStyle getRegularStyle(
     {double fontSize = FontSize.s12,
-    String fontFamily = FontFamily.montserrat,
+    String fontFamily = FontFamily.lato,
     required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.regular, color, fontFamily);
 }
@@ -21,7 +21,7 @@ TextStyle getRegularStyle(
 // medium style
 TextStyle getMediumStyle(
     {double fontSize = FontSize.s12,
-    String fontFamily = FontFamily.montserrat,
+    String fontFamily = FontFamily.lato,
     required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.medium, color, fontFamily);
 }
@@ -29,7 +29,7 @@ TextStyle getMediumStyle(
 // medium style
 TextStyle getLightStyle(
     {double fontSize = FontSize.s12,
-    String fontFamily = FontFamily.montserrat,
+    String fontFamily = FontFamily.lato,
     required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.light, color, fontFamily);
 }
@@ -37,7 +37,7 @@ TextStyle getLightStyle(
 // bold style
 TextStyle getBoldStyle(
     {double fontSize = FontSize.s12,
-    String fontFamily = FontFamily.montserrat,
+    String fontFamily = FontFamily.lato,
     required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.bold, color, fontFamily);
 }
@@ -45,7 +45,7 @@ TextStyle getBoldStyle(
 // semiBold style
 TextStyle getSemiBoldStyle(
     {double fontSize = FontSize.s12,
-    String fontFamily = FontFamily.montserrat,
+    String fontFamily = FontFamily.lato,
     required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.semiBold, color, fontFamily);
 }
