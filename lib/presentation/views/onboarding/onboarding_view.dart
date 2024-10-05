@@ -6,7 +6,7 @@ import 'package:base_flutter/presentation/resources/color_manager.dart';
 import 'package:base_flutter/presentation/resources/font_manager.dart';
 import 'package:base_flutter/presentation/resources/routes_manager.dart';
 import 'package:base_flutter/presentation/resources/styles_manager.dart';
-import 'package:base_flutter/presentation/widgets/button/button_component.dart';
+import 'package:base_flutter/presentation/widgets/button/button_sample_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -125,7 +125,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                               const SizedBox(
                                 height: 30,
                               ),
-                              ButtonComponent(
+                              ButtonSampleComponent(
                                   title: 'Let\'s Start',
                                   isFullWidth: false,
                                   onPressed: () {
@@ -153,7 +153,7 @@ class _OnboardingViewState extends State<OnboardingView> {
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(50)),
           color:
-              _currentPage == index ? ColorManager.blue1 : ColorManager.blue3),
+              _currentPage == index ? ColorManager.sampleBlue1 : ColorManager.blue3),
       margin: const EdgeInsets.symmetric(horizontal: 10),
       height: 20,
       curve: Curves.easeIn,

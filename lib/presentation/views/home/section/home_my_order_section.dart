@@ -60,7 +60,7 @@ class _HomeMyOrderSectionState extends State<HomeMyOrderSection> {
           child: Text(
             title,
             style: getMediumStyle(
-                color: ColorManager.blue1,
+                color: ColorManager.sampleBlue1,
                 fontSize: 16,
                 fontFamily: FontFamily.raleway),
           ),

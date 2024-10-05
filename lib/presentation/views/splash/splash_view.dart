@@ -49,6 +49,12 @@ class _SplashViewState extends State<SplashView> {
   }
 
   @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.white,
@@ -95,17 +101,10 @@ class _SplashViewState extends State<SplashView> {
                   color: ColorManager.black,
                   fontSize: 19,
                   fontFamily: FontFamily.nunitoSans),
-            )
+            ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    //here u can prevent any memory leak!
-    _timer?.cancel();
-    super.dispose();
   }
 }
